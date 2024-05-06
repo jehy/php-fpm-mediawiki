@@ -10,7 +10,7 @@ on:
 jobs:
 
   release_1_35:
-    if: contains(github.event.release.name, '1.35')
+    if: contains(github.event.release.tag_name, '1.35')
     name: Release_1_35
     runs-on: ubuntu-latest
     permissions:
