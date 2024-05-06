@@ -1,0 +1,74 @@
+version: '3.9'
+services:
+
+  php:
+    image: ghcr.io/wod-serial/techno-wiki:0.0.48
+    volumes:
+      - home:/var/www/public_html:rw
+      - images:/var/www/images:rw
+    container_name: php
+    restart: unless-stopped
+    tty: true
+    environment:
+      - TZ=Europe/Moscow
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 500M
+    networks:
+      - wiki-network
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "127.0.0.1:6602:80"
+    volumes:
+      - nginx-config:/etc/nginx/conf.d:ro
+      - home:/var/www/public_html:ro
+    container_name: nginx
+    restart: unless-stopped
+    tty: true
+    environment:
+      - TZ=Europe/Moscow
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 200M
+    networks:
+      - wiki-network
+
+
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "127.0.0.1:6603:3306"
+    environment:
+      MYSQL_DATABASE: tc
+      MYSQL_USER: tc
+      MYSQL_PASSWORD: ${MYSQL_USER_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - mysql:/var/lib/mysql:rw
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 500M
+    networks:
+      - wiki-network
+
+
+volumes:
+  home:
+  images:
+  mysql:
+  nginx-config:
+
+networks:
+  wiki-network:
+    driver: bridge
