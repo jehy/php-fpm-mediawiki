@@ -20,12 +20,14 @@ I used Mysql 5.7 because it is compatible with all wiki versions I saw.
 
 How update can be done:
 
-1. Use docker compose or pull image according to your wiki version, for example `ghcr.io/jehy/php-fpm-mediawiki_1.24:latest`
-2. Make sure everything is alright
-3. Update php-fpm to next version, for example `ghcr.io/jehy/php-fpm-mediawiki_1.35:latest`
-4. Copy new wiki files to your web server
-5. Run maintenance update script
-6. Repeat 2-5 until you have latest version :)
+1. Make a full backup of your database, file system and images
+2. Use docker compose or pull image according to your wiki version, for example `ghcr.io/jehy/php-fpm-mediawiki_1.24:latest`, and deploy your current version using it.
+3. Make sure everything is alright
+4. Update php-fpm to next version, for example `ghcr.io/jehy/php-fpm-mediawiki_1.35:latest`
+5. Copy new wiki version files to your web server
+6. Run maintenance update script
+7. Make sure everything is alright
+8. Repeat 4-7 until you have latest version :)
 
 # Provided packages:
 
@@ -53,7 +55,7 @@ docker exec -it phpContainerName sh
 cd /var/www/public_html/maintenance/
 php ./update.php
 
-# reinstall composer deps which are broken in gzip inside container
+# reinstall composer deps if they are broken in downloaded gzip
 cd /var/www/public_html/
 rm ./vendor/* -rf
 composer install
