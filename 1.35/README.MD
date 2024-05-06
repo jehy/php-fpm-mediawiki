@@ -1,3 +1,5 @@
-Docker image with php 5.6
+Docker image with php 7.4.3
 
-Compatible wiki versions: 1.23-1.30
+Compatible wiki versions: 1.31-1.41
+
+(should be compatible only with 1.35 according to charts but works with 1.31+ fine too)

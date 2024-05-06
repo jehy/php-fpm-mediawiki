@@ -13,24 +13,24 @@ Also, basic docker images don't work because they dont contain needed PHP extens
 
 And building a docker image for old php versions is a bit complex since many repos and certificates already stopped existing.
 
-I've gone through it and wanted to share docker images for php-fpm that can help to update from 1.23 to 1.41 version.
+I've gone through it and wanted to share docker images for php-fpm that can help to update from 1.24 to 1.41 version.
 
 You are free to use my docker compose, nginx and mysql docker files, or any another you like.
 I used Mysql 5.7 because it is compatible with all wiki versions I saw.
 
 How update can be done:
 
-1. Use docker compose or pull image according to your wiki version, for example `ghcr.io/jehy/php-fpm-mediawiki_1.35:latest`
+1. Use docker compose or pull image according to your wiki version, for example `ghcr.io/jehy/php-fpm-mediawiki_1.24:latest`
 2. Make sure everything is alright
-3. Update php-fpm to next version, for example `ghcr.io/jehy/php-fpm-mediawiki_1.39:latest`
+3. Update php-fpm to next version, for example `ghcr.io/jehy/php-fpm-mediawiki_1.35:latest`
 4. Copy new wiki files to your web server
 5. Run maintenance update script
 6. Repeat 2-5 until you have latest version :)
 
 # Provided packages:
 
+* `ghcr.io/jehy/php-fpm-mediawiki_1.24:latest`
 * `ghcr.io/jehy/php-fpm-mediawiki_1.35:latest`
-* `ghcr.io/jehy/php-fpm-mediawiki_1.39:latest`
 * `ghcr.io/jehy/php-fpm-mediawiki_1.41:latest`
 
 
