@@ -2,7 +2,7 @@ version: '3.9'
 services:
 
   php:
-    image: ghcr.io/wod-serial/techno-wiki:0.0.48
+    image: ghcr.io/jehy/php-fpm-mediawiki_1.35:latest
     volumes:
       - home:/var/www/public_html:rw
       - images:/var/www/images:rw
