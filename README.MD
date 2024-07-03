@@ -13,7 +13,7 @@ Also update should be incremental because of the new mediawiki policy:
 
 ### Why use docker?
 
-Simply because current OS don't support old PHP versions and necessary PHP extensions.
+Simply because current OS versions don't support old PHP versions and necessary PHP extensions.
 
 ### Why not use existing docker images?
 
@@ -23,7 +23,7 @@ Building a docker image for old php versions is a bit complex since many repos a
 
 ~~Mediawiki provides [some docker images](https://hub.docker.com/_/mediawiki), but only for versions 1.39+, so it's useless for upgrade:~~
 
-**UPD:** It appears that I was wrong, official mediawiki README does not list old versions, and I did not list all the tags. Now I see that there are images from 1.29+, so **you can possibly use those**. May be thse dont't really work or are unextendable. Anyway, if you wanna build new images then this repo and images may be useful.
+**UPD:** It appears that I was wrong, official mediawiki README does not list old versions as supported, and I did not list all the tags. Now I see that there are images from 1.29+, so **you can possibly use those**. May be those dont't really work or are unextendable. Anyway, if you wanna build new images then this repo and images may be useful.
 
 ### So what can we do?
 
@@ -35,7 +35,7 @@ I used Mysql 5.7 because it is compatible with all wiki versions I saw.
 ### How to update using those images:
 
 1. Make a full backup of your database, file system and images
-2. Use docker compose or pull image according to your wiki version, for example `ghcr.io/jehy/php-fpm-mediawiki_1.24:latest`, and deploy your current version using it.
+2. Use docker compose or pull image according to your wiki version, for example `ghcr.io/jehy/php-fpm-mediawiki_1.24:latest`, and deploy your current version using it (import database dump and copy wiki files to `home` volume).
 3. Make sure everything is alright
 4. Update php-fpm to next version, for example `ghcr.io/jehy/php-fpm-mediawiki_1.35:latest`
 5. Copy new wiki version files to your web server
