@@ -23,7 +23,7 @@ Building a docker image for old php versions is a bit complex since many repos a
 
 ~~Mediawiki provides [some docker images](https://hub.docker.com/_/mediawiki), but only for versions 1.39+, so it's useless for upgrade.~~
 
-UPD: It appears that I was wrong and I did not list all the tags. Now I see that there are images from 1.29+, so **you can use those**. Anyway, if you wanna build new images then this repo and images may be useful.
+UPD: It appears that I was wrong, official mediawiki README lies about supported version, and I did not list all the tags. Now I see that there are images from 1.29+, so **you can possibly use those**. Anyway, if you wanna build new images then this repo and images may be useful.
 
 ### So what can we do?
 
