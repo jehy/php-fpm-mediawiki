@@ -48,6 +48,7 @@ I used Mysql 5.7 because it is compatible with all wiki versions I saw.
 * `ghcr.io/jehy/php-fpm-mediawiki_1.24:latest`
 * `ghcr.io/jehy/php-fpm-mediawiki_1.35:latest`
 * `ghcr.io/jehy/php-fpm-mediawiki_1.41:latest`
+* `ghcr.io/jehy/php-fpm-mediawiki_1.45:latest`
 
 
 ## Useful scripts
@@ -73,4 +74,7 @@ php ./update.php
 cd /var/www/public_html/
 rm ./vendor/* -rf
 composer install
+
+# run updates without entering docker container
+docker exec serial-wiki-hermes-php php /var/www/public_html/maintenance/run.php update
 ```
