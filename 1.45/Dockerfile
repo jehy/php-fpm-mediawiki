@@ -53,3 +53,4 @@ RUN rm /usr/local/etc/php-fpm.d/*
 COPY php-fpm.d/www.conf /usr/local/etc/php-fpm.d/
 #RUN cp /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini
 COPY php.ini /usr/local/etc/php
+COPY opcache.ini /usr/local/etc/php/conf.d/opcache.ini
