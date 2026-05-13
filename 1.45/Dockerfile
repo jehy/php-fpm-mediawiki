@@ -25,6 +25,8 @@ RUN apk add \
     && docker-php-ext-configure zip \
     && docker-php-ext-install zip
 
+RUN RUN docker-php-ext-install opcache
+
 RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS imagemagick-dev libtool libgomp \
     && docker-php-ext-install calendar && docker-php-ext-enable calendar \
     && apk add --no-cache imagemagick mysql-client \
