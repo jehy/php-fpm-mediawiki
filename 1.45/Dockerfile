@@ -1,4 +1,4 @@
-FROM php:8.2-fpm-alpine
+FROM php:8.5.12-fpm-alpine
 
  # сертификаты в старом имадже протухли, так что воруем их из более нового
 
@@ -25,8 +25,6 @@ RUN apk add \
     && docker-php-ext-configure zip \
     && docker-php-ext-install zip
 
-RUN docker-php-ext-install opcache
-
 RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS imagemagick-dev libtool libgomp \
     && docker-php-ext-install calendar && docker-php-ext-enable calendar \
     && apk add --no-cache imagemagick mysql-client \
@@ -38,7 +36,7 @@ RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS imagemagick-dev libtoo
 
 RUN apk add --no-cache libmemcached-libs zlib \
     && apk add --no-cache --virtual .build-deps $PHPIZE_DEPS zlib-dev libmemcached-dev \
-    && pecl install memcached-3.2.0 \
+    && pecl install memcached-3.4.0 \
     && docker-php-ext-enable memcached \
     && apk del -f .build-deps
 
